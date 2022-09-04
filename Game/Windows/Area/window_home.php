@@ -58,9 +58,16 @@ switch (array_key_first($action)){
         break;
     case "village":
         header('Location: ../../../game.php');
+        break;
     case "inventory":
-        $character->filterMobDrops();
+        $modal = "inventory";
         include "../../Modals/Inventory.php";
+        break;
+    case "inventoryMob":
+        $modal = "inventoryMob";
+        include "../../Modals/Inventory.php";
+        break;
+
 }
 
 ?>
