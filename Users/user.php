@@ -10,7 +10,7 @@ class User
 
     public function __construct($database, $host, $databaseUsername, $databaseUserPassword)
     {
-        $dev = true;
+        $dev = false;
         if ($dev) {
             $databaseUserPassword = "11223344";
             $databaseUsername = "dev";
