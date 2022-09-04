@@ -1,0 +1,9 @@
+{
+    "food": {
+        "noodles":25,
+        "burgers": 50,
+        "pizza": 75,
+        "mango": 15,
+        "hunger": 69
+    }
+}

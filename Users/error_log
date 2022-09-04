@@ -1,0 +1,159 @@
+[01-Sep-2022 12:27:46 UTC] PHP Warning:  include(HTML/header.php): failed to open stream: No such file or directory in /home/khzrz8uur50c/public_html/index.php on line 6
+[01-Sep-2022 12:27:46 UTC] PHP Warning:  include(): Failed opening 'HTML/header.php' for inclusion (include_path='.:/opt/alt/php74/usr/share/pear') in /home/khzrz8uur50c/public_html/index.php on line 6
+[01-Sep-2022 12:27:49 UTC] PHP Warning:  include(HTML/header.php): failed to open stream: No such file or directory in /home/khzrz8uur50c/public_html/index.php on line 6
+[01-Sep-2022 12:27:49 UTC] PHP Warning:  include(): Failed opening 'HTML/header.php' for inclusion (include_path='.:/opt/alt/php74/usr/share/pear') in /home/khzrz8uur50c/public_html/index.php on line 6
+[01-Sep-2022 12:27:52 UTC] PHP Warning:  include(HTML/header.php): failed to open stream: No such file or directory in /home/khzrz8uur50c/public_html/index.php on line 6
+[01-Sep-2022 12:27:52 UTC] PHP Warning:  include(): Failed opening 'HTML/header.php' for inclusion (include_path='.:/opt/alt/php74/usr/share/pear') in /home/khzrz8uur50c/public_html/index.php on line 6
+[01-Sep-2022 12:27:53 UTC] PHP Warning:  include(HTML/header.php): failed to open stream: No such file or directory in /home/khzrz8uur50c/public_html/index.php on line 6
+[01-Sep-2022 12:27:53 UTC] PHP Warning:  include(): Failed opening 'HTML/header.php' for inclusion (include_path='.:/opt/alt/php74/usr/share/pear') in /home/khzrz8uur50c/public_html/index.php on line 6
+[01-Sep-2022 12:27:55 UTC] PHP Warning:  include(HTML/header.php): failed to open stream: No such file or directory in /home/khzrz8uur50c/public_html/index.php on line 6
+[01-Sep-2022 12:27:55 UTC] PHP Warning:  include(): Failed opening 'HTML/header.php' for inclusion (include_path='.:/opt/alt/php74/usr/share/pear') in /home/khzrz8uur50c/public_html/index.php on line 6
+[01-Sep-2022 12:27:57 UTC] PHP Warning:  include(HTML/header.php): failed to open stream: No such file or directory in /home/khzrz8uur50c/public_html/index.php on line 6
+[01-Sep-2022 12:27:57 UTC] PHP Warning:  include(): Failed opening 'HTML/header.php' for inclusion (include_path='.:/opt/alt/php74/usr/share/pear') in /home/khzrz8uur50c/public_html/index.php on line 6
+[01-Sep-2022 12:27:58 UTC] PHP Warning:  include(HTML/header.php): failed to open stream: No such file or directory in /home/khzrz8uur50c/public_html/index.php on line 6
+[01-Sep-2022 12:27:58 UTC] PHP Warning:  include(): Failed opening 'HTML/header.php' for inclusion (include_path='.:/opt/alt/php74/usr/share/pear') in /home/khzrz8uur50c/public_html/index.php on line 6
+[01-Sep-2022 12:28:00 UTC] PHP Warning:  include(HTML/header.php): failed to open stream: No such file or directory in /home/khzrz8uur50c/public_html/index.php on line 6
+[01-Sep-2022 12:28:00 UTC] PHP Warning:  include(): Failed opening 'HTML/header.php' for inclusion (include_path='.:/opt/alt/php74/usr/share/pear') in /home/khzrz8uur50c/public_html/index.php on line 6
+[01-Sep-2022 12:28:03 UTC] PHP Warning:  include(HTML/header.php): failed to open stream: No such file or directory in /home/khzrz8uur50c/public_html/index.php on line 6
+[01-Sep-2022 12:28:03 UTC] PHP Warning:  include(): Failed opening 'HTML/header.php' for inclusion (include_path='.:/opt/alt/php74/usr/share/pear') in /home/khzrz8uur50c/public_html/index.php on line 6
+[01-Sep-2022 12:28:05 UTC] PHP Warning:  include(HTML/header.php): failed to open stream: No such file or directory in /home/khzrz8uur50c/public_html/index.php on line 6
+[01-Sep-2022 12:28:05 UTC] PHP Warning:  include(): Failed opening 'HTML/header.php' for inclusion (include_path='.:/opt/alt/php74/usr/share/pear') in /home/khzrz8uur50c/public_html/index.php on line 6
+[01-Sep-2022 12:28:07 UTC] PHP Warning:  include(HTML/header.php): failed to open stream: No such file or directory in /home/khzrz8uur50c/public_html/index.php on line 6
+[01-Sep-2022 12:28:07 UTC] PHP Warning:  include(): Failed opening 'HTML/header.php' for inclusion (include_path='.:/opt/alt/php74/usr/share/pear') in /home/khzrz8uur50c/public_html/index.php on line 6
+[01-Sep-2022 12:28:52 UTC] PHP Notice:  Undefined index: user in /home/khzrz8uur50c/public_html/game.php on line 25
+[01-Sep-2022 12:28:52 UTC] PHP Warning:  file_get_contents(/home/khzrz8uur50c/public_htmlGAME/Game/Enemies/Rat.json): failed to open stream: No such file or directory in /home/khzrz8uur50c/public_html/Game/Enemy.php on line 170
+[01-Sep-2022 12:28:52 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/khzrz8uur50c/public_html/Game/Enemy.php on line 171
+[01-Sep-2022 12:28:52 UTC] PHP Fatal error:  Uncaught TypeError: Typed property Rextopia\Game\Enemy\Enemy::$maxHealth must be int, null used in /home/khzrz8uur50c/public_html/Game/Enemy.php:26
+Stack trace:
+#0 /home/khzrz8uur50c/public_html/game.php(78): Rextopia\Game\Enemy\Enemy->setMaxHealth()
+#1 {main}
+  thrown in /home/khzrz8uur50c/public_html/Game/Enemy.php on line 26
+[01-Sep-2022 12:35:24 UTC] PHP Notice:  Undefined index: user in /home/khzrz8uur50c/public_html/game.php on line 25
+[01-Sep-2022 12:35:24 UTC] PHP Warning:  file_get_contents(/home/khzrz8uur50c/public_htmlGAME/Game/Enemies/Rat.json): failed to open stream: No such file or directory in /home/khzrz8uur50c/public_html/Game/Enemy.php on line 170
+[01-Sep-2022 12:35:24 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/khzrz8uur50c/public_html/Game/Enemy.php on line 171
+[01-Sep-2022 12:35:24 UTC] PHP Fatal error:  Uncaught TypeError: Typed property Rextopia\Game\Enemy\Enemy::$maxHealth must be int, null used in /home/khzrz8uur50c/public_html/Game/Enemy.php:26
+Stack trace:
+#0 /home/khzrz8uur50c/public_html/game.php(78): Rextopia\Game\Enemy\Enemy->setMaxHealth()
+#1 {main}
+  thrown in /home/khzrz8uur50c/public_html/Game/Enemy.php on line 26
+[01-Sep-2022 12:35:43 UTC] PHP Notice:  Undefined index: user in /home/khzrz8uur50c/public_html/game.php on line 25
+[01-Sep-2022 12:35:43 UTC] PHP Warning:  file_get_contents(/home/khzrz8uur50c/public_htmlGAME/Game/Enemies/Rat.json): failed to open stream: No such file or directory in /home/khzrz8uur50c/public_html/Game/Enemy.php on line 170
+[01-Sep-2022 12:35:43 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/khzrz8uur50c/public_html/Game/Enemy.php on line 171
+[01-Sep-2022 12:35:43 UTC] PHP Fatal error:  Uncaught TypeError: Typed property Rextopia\Game\Enemy\Enemy::$maxHealth must be int, null used in /home/khzrz8uur50c/public_html/Game/Enemy.php:26
+Stack trace:
+#0 /home/khzrz8uur50c/public_html/game.php(78): Rextopia\Game\Enemy\Enemy->setMaxHealth()
+#1 {main}
+  thrown in /home/khzrz8uur50c/public_html/Game/Enemy.php on line 26
+[01-Sep-2022 12:35:44 UTC] PHP Notice:  Undefined index: user in /home/khzrz8uur50c/public_html/game.php on line 25
+[01-Sep-2022 12:35:44 UTC] PHP Warning:  file_get_contents(/home/khzrz8uur50c/public_htmlGAME/Game/Enemies/Rat.json): failed to open stream: No such file or directory in /home/khzrz8uur50c/public_html/Game/Enemy.php on line 170
+[01-Sep-2022 12:35:44 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/khzrz8uur50c/public_html/Game/Enemy.php on line 171
+[01-Sep-2022 12:35:44 UTC] PHP Fatal error:  Uncaught TypeError: Typed property Rextopia\Game\Enemy\Enemy::$maxHealth must be int, null used in /home/khzrz8uur50c/public_html/Game/Enemy.php:26
+Stack trace:
+#0 /home/khzrz8uur50c/public_html/game.php(78): Rextopia\Game\Enemy\Enemy->setMaxHealth()
+#1 {main}
+  thrown in /home/khzrz8uur50c/public_html/Game/Enemy.php on line 26
+[01-Sep-2022 12:36:10 UTC] PHP Notice:  Undefined index: user in /home/khzrz8uur50c/public_html/game.php on line 25
+[01-Sep-2022 12:36:10 UTC] PHP Warning:  file_get_contents(/home/khzrz8uur50c/public_htmlGAME/Game/Enemies/Rat.json): failed to open stream: No such file or directory in /home/khzrz8uur50c/public_html/Game/Enemy.php on line 170
+[01-Sep-2022 12:36:10 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/khzrz8uur50c/public_html/Game/Enemy.php on line 171
+[01-Sep-2022 12:36:10 UTC] PHP Fatal error:  Uncaught TypeError: Typed property Rextopia\Game\Enemy\Enemy::$maxHealth must be int, null used in /home/khzrz8uur50c/public_html/Game/Enemy.php:26
+Stack trace:
+#0 /home/khzrz8uur50c/public_html/game.php(78): Rextopia\Game\Enemy\Enemy->setMaxHealth()
+#1 {main}
+  thrown in /home/khzrz8uur50c/public_html/Game/Enemy.php on line 26
+[01-Sep-2022 13:02:30 UTC] PHP Warning:  file_get_contents(/home/khzrz8uur50c/public_htmlGAME/Game/Enemies/Rat.json): failed to open stream: No such file or directory in /home/khzrz8uur50c/public_html/Game/Enemy.php on line 170
+[01-Sep-2022 13:02:30 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/khzrz8uur50c/public_html/Game/Enemy.php on line 171
+[01-Sep-2022 13:02:30 UTC] PHP Fatal error:  Uncaught TypeError: Typed property Rextopia\Game\Enemy\Enemy::$maxHealth must be int, null used in /home/khzrz8uur50c/public_html/Game/Enemy.php:26
+Stack trace:
+#0 /home/khzrz8uur50c/public_html/game.php(78): Rextopia\Game\Enemy\Enemy->setMaxHealth()
+#1 {main}
+  thrown in /home/khzrz8uur50c/public_html/Game/Enemy.php on line 26
+[01-Sep-2022 13:27:15 UTC] PHP Notice:  Undefined index: user in /home/khzrz8uur50c/public_html/game.php on line 25
+[01-Sep-2022 18:04:30 UTC] PHP Notice:  Undefined index: user in /home/khzrz8uur50c/public_html/game.php on line 25
+[02-Sep-2022 06:27:33 UTC] PHP Notice:  Undefined index: user in /home/khzrz8uur50c/public_html/game.php on line 26
+[02-Sep-2022 06:28:06 UTC] PHP Notice:  Undefined index: user in /home/khzrz8uur50c/public_html/game.php on line 26
+[02-Sep-2022 06:28:10 UTC] PHP Notice:  Undefined index: user in /home/khzrz8uur50c/public_html/game.php on line 26
+[02-Sep-2022 06:28:11 UTC] PHP Notice:  Undefined index: user in /home/khzrz8uur50c/public_html/game.php on line 26
+[02-Sep-2022 06:28:15 UTC] PHP Notice:  Undefined index: user in /home/khzrz8uur50c/public_html/game.php on line 26
+[02-Sep-2022 06:28:17 UTC] PHP Notice:  Undefined index: user in /home/khzrz8uur50c/public_html/game.php on line 26
+[02-Sep-2022 06:28:18 UTC] PHP Notice:  Undefined index: user in /home/khzrz8uur50c/public_html/game.php on line 26
+[02-Sep-2022 06:28:19 UTC] PHP Notice:  Undefined index: user in /home/khzrz8uur50c/public_html/game.php on line 26
+[02-Sep-2022 06:28:19 UTC] PHP Notice:  Undefined index: user in /home/khzrz8uur50c/public_html/game.php on line 26
+[02-Sep-2022 06:28:20 UTC] PHP Notice:  Undefined index: user in /home/khzrz8uur50c/public_html/game.php on line 26
+[02-Sep-2022 06:28:20 UTC] PHP Notice:  Undefined index: user in /home/khzrz8uur50c/public_html/game.php on line 26
+[02-Sep-2022 06:28:20 UTC] PHP Notice:  Undefined index: user in /home/khzrz8uur50c/public_html/game.php on line 26
+[02-Sep-2022 06:28:34 UTC] PHP Notice:  Undefined index: user in /home/khzrz8uur50c/public_html/game.php on line 26
+[02-Sep-2022 06:28:40 UTC] PHP Notice:  Undefined index: user in /home/khzrz8uur50c/public_html/game.php on line 26
+[02-Sep-2022 06:28:42 UTC] PHP Notice:  Undefined index: user in /home/khzrz8uur50c/public_html/game.php on line 26
+[02-Sep-2022 07:44:20 UTC] PHP Notice:  Undefined index: user in /home/khzrz8uur50c/public_html/game.php on line 26
+[02-Sep-2022 07:44:29 UTC] PHP Notice:  Undefined index: user in /home/khzrz8uur50c/public_html/game.php on line 26
+[02-Sep-2022 08:35:03 UTC] PHP Notice:  Undefined index: user in /home/khzrz8uur50c/public_html/game.php on line 26
+[02-Sep-2022 09:17:47 UTC] PHP Notice:  Undefined index: user in /home/khzrz8uur50c/public_html/game.php on line 26
+[02-Sep-2022 10:43:46 UTC] PHP Notice:  Undefined index: user in /home/khzrz8uur50c/public_html/game.php on line 26
+[02-Sep-2022 10:44:05 UTC] PHP Notice:  Undefined index: user in /home/khzrz8uur50c/public_html/game.php on line 26
+[02-Sep-2022 15:15:57 UTC] PHP Warning:  include(user.php): failed to open stream: No such file or directory in /home/khzrz8uur50c/public_html/login.php on line 3
+[02-Sep-2022 15:15:57 UTC] PHP Warning:  include(): Failed opening 'user.php' for inclusion (include_path='.:/opt/alt/php74/usr/share/pear') in /home/khzrz8uur50c/public_html/login.php on line 3
+[02-Sep-2022 15:15:57 UTC] PHP Fatal error:  Uncaught Error: Class 'User' not found in /home/khzrz8uur50c/public_html/login.php:5
+Stack trace:
+#0 {main}
+  thrown in /home/khzrz8uur50c/public_html/login.php on line 5
+[02-Sep-2022 15:16:00 UTC] PHP Warning:  include(user.php): failed to open stream: No such file or directory in /home/khzrz8uur50c/public_html/login.php on line 3
+[02-Sep-2022 15:16:00 UTC] PHP Warning:  include(): Failed opening 'user.php' for inclusion (include_path='.:/opt/alt/php74/usr/share/pear') in /home/khzrz8uur50c/public_html/login.php on line 3
+[02-Sep-2022 15:16:00 UTC] PHP Fatal error:  Uncaught Error: Class 'User' not found in /home/khzrz8uur50c/public_html/login.php:5
+Stack trace:
+#0 {main}
+  thrown in /home/khzrz8uur50c/public_html/login.php on line 5
+[02-Sep-2022 15:16:01 UTC] PHP Warning:  include(user.php): failed to open stream: No such file or directory in /home/khzrz8uur50c/public_html/login.php on line 3
+[02-Sep-2022 15:16:01 UTC] PHP Warning:  include(): Failed opening 'user.php' for inclusion (include_path='.:/opt/alt/php74/usr/share/pear') in /home/khzrz8uur50c/public_html/login.php on line 3
+[02-Sep-2022 15:16:01 UTC] PHP Fatal error:  Uncaught Error: Class 'User' not found in /home/khzrz8uur50c/public_html/login.php:5
+Stack trace:
+#0 {main}
+  thrown in /home/khzrz8uur50c/public_html/login.php on line 5
+[02-Sep-2022 15:16:02 UTC] PHP Warning:  include(user.php): failed to open stream: No such file or directory in /home/khzrz8uur50c/public_html/login.php on line 3
+[02-Sep-2022 15:16:02 UTC] PHP Warning:  include(): Failed opening 'user.php' for inclusion (include_path='.:/opt/alt/php74/usr/share/pear') in /home/khzrz8uur50c/public_html/login.php on line 3
+[02-Sep-2022 15:16:02 UTC] PHP Fatal error:  Uncaught Error: Class 'User' not found in /home/khzrz8uur50c/public_html/login.php:5
+Stack trace:
+#0 {main}
+  thrown in /home/khzrz8uur50c/public_html/login.php on line 5
+[02-Sep-2022 15:16:03 UTC] PHP Warning:  include(user.php): failed to open stream: No such file or directory in /home/khzrz8uur50c/public_html/login.php on line 3
+[02-Sep-2022 15:16:03 UTC] PHP Warning:  include(): Failed opening 'user.php' for inclusion (include_path='.:/opt/alt/php74/usr/share/pear') in /home/khzrz8uur50c/public_html/login.php on line 3
+[02-Sep-2022 15:16:03 UTC] PHP Fatal error:  Uncaught Error: Class 'User' not found in /home/khzrz8uur50c/public_html/login.php:5
+Stack trace:
+#0 {main}
+  thrown in /home/khzrz8uur50c/public_html/login.php on line 5
+[02-Sep-2022 15:16:04 UTC] PHP Warning:  include(user.php): failed to open stream: No such file or directory in /home/khzrz8uur50c/public_html/login.php on line 3
+[02-Sep-2022 15:16:04 UTC] PHP Warning:  include(): Failed opening 'user.php' for inclusion (include_path='.:/opt/alt/php74/usr/share/pear') in /home/khzrz8uur50c/public_html/login.php on line 3
+[02-Sep-2022 15:16:04 UTC] PHP Fatal error:  Uncaught Error: Class 'User' not found in /home/khzrz8uur50c/public_html/login.php:5
+Stack trace:
+#0 {main}
+  thrown in /home/khzrz8uur50c/public_html/login.php on line 5
+[02-Sep-2022 18:45:26 UTC] PHP Notice:  Undefined index: user in /home/khzrz8uur50c/public_html/game.php on line 26
+[02-Sep-2022 19:10:10 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function Rextopia\Game\Online\str_contains() in /home/khzrz8uur50c/public_html/Game/Online.php:13
+Stack trace:
+#0 /home/khzrz8uur50c/public_html/game.php(200): Rextopia\Game\Online\Online->getOnlineUsers()
+#1 {main}
+  thrown in /home/khzrz8uur50c/public_html/Game/Online.php on line 13
+[02-Sep-2022 19:11:03 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function Rextopia\Game\Online\str_contains() in /home/khzrz8uur50c/public_html/Game/Online.php:13
+Stack trace:
+#0 /home/khzrz8uur50c/public_html/game.php(200): Rextopia\Game\Online\Online->getOnlineUsers()
+#1 {main}
+  thrown in /home/khzrz8uur50c/public_html/Game/Online.php on line 13
+[02-Sep-2022 19:15:35 UTC] PHP Warning:  Undefined array key "user" in /home/khzrz8uur50c/public_html/game.php on line 27
+[02-Sep-2022 19:16:56 UTC] PHP Warning:  Undefined array key "user" in /home/khzrz8uur50c/public_html/game.php on line 27
+[02-Sep-2022 19:23:08 UTC] PHP Warning:  Undefined array key "user" in /home/khzrz8uur50c/public_html/game.php on line 26
+[02-Sep-2022 19:23:15 UTC] PHP Warning:  Undefined array key "user" in /home/khzrz8uur50c/public_html/game.php on line 26
+[02-Sep-2022 19:23:16 UTC] PHP Warning:  Undefined array key "user" in /home/khzrz8uur50c/public_html/game.php on line 26
+[02-Sep-2022 19:23:30 UTC] PHP Warning:  Undefined array key "user" in /home/khzrz8uur50c/public_html/game.php on line 26
+[02-Sep-2022 19:23:30 UTC] PHP Warning:  Undefined array key "user" in /home/khzrz8uur50c/public_html/game.php on line 26
+[02-Sep-2022 19:23:32 UTC] PHP Warning:  Undefined array key "user" in /home/khzrz8uur50c/public_html/game.php on line 26
+[02-Sep-2022 19:23:32 UTC] PHP Warning:  Undefined array key "user" in /home/khzrz8uur50c/public_html/game.php on line 26
+[02-Sep-2022 19:23:34 UTC] PHP Warning:  Undefined array key "user" in /home/khzrz8uur50c/public_html/game.php on line 26
+[02-Sep-2022 19:23:35 UTC] PHP Warning:  Undefined array key "user" in /home/khzrz8uur50c/public_html/game.php on line 26
+[02-Sep-2022 19:23:36 UTC] PHP Warning:  Undefined array key "user" in /home/khzrz8uur50c/public_html/game.php on line 26
+[02-Sep-2022 19:23:37 UTC] PHP Warning:  Undefined array key "user" in /home/khzrz8uur50c/public_html/game.php on line 26
+[02-Sep-2022 19:24:38 UTC] PHP Warning:  Undefined array key "user" in /home/khzrz8uur50c/public_html/game.php on line 26
+[02-Sep-2022 19:24:38 UTC] PHP Warning:  Undefined array key "user" in /home/khzrz8uur50c/public_html/game.php on line 26
+[02-Sep-2022 19:25:33 UTC] PHP Warning:  Undefined array key "user" in /home/khzrz8uur50c/public_html/game.php on line 26
+[02-Sep-2022 19:25:33 UTC] PHP Warning:  Undefined array key "user" in /home/khzrz8uur50c/public_html/game.php on line 26
+[02-Sep-2022 19:29:17 UTC] PHP Warning:  Undefined array key "user" in /home/khzrz8uur50c/public_html/game.php on line 26
+[02-Sep-2022 19:29:17 UTC] PHP Warning:  Undefined array key "user" in /home/khzrz8uur50c/public_html/game.php on line 26
+[02-Sep-2022 19:35:39 UTC] PHP Warning:  Undefined array key "user" in /home/khzrz8uur50c/public_html/game.php on line 26

@@ -1,0 +1,29 @@
+{
+    "food":{
+        "pizza": {
+            "health": 25,
+            "stamina": 45,
+            "mana": 10
+        },
+        "mango": {
+            "health": 5,
+            "stamina": 15,
+            "mana": 0 
+        },
+        "burgers": {
+            "health": 5,
+            "stamina": 75,
+            "mana": 0
+        },
+        "hunger": {
+            "health":6,
+            "stamina": 9,
+            "mana": 69
+        },
+        "noodles": {
+            "health":10,
+            "stamina": 2,
+            "mana": 0
+        }
+    }
+}

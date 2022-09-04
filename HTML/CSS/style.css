@@ -1,0 +1,36 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: #331832;
+}
+
+.char_details{
+    background-color: #69306D;
+    padding: 15px;
+    color: #F2D7EE;
+    display: flex;
+    justify-content: space-between;
+}
+
+.container{
+    padding: 10px;
+    background-color: black;
+    color:white;
+}
+
+.container input{
+    margin-top: 5px;
+}
+
+.container.character{
+    background-color: #64B6AC;
+    display: flex;
+    justify-content: space-between;
+}
+
+.container.stats{
+    background-color: #B09E99;
+}
