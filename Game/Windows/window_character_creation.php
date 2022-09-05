@@ -54,7 +54,6 @@ $active = "primary";
         if($canCreate){
             $charName = $_POST['character'];
             $character = new \Rextopia\Game\Character\Character($charName,"warrior" );
-            $character->saveNewCharacter($character);
             $character->saveCharacter($character);
             $_SESSION['character'] = $character->getName();
             header("Location: ../../game.php");

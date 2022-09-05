@@ -21,22 +21,37 @@ class Enemy
         $this->inventory = $inventory;
 
         switch ($name) {
-            case "Bat":
+            case "bat":
                 $this->strength = 3;
                 break;
-            case "Spider":
-            case "Rat":
+            case "spider":
+            case "rat":
                 $this->strength = 2;
                 break;
-            case "Slime":
+            case "slime":
                 $this->strength = 1;
                 break;
-            case "Goblin":
+            case "goblin":
                 $this->strength = 8;
                 break;
-            case "Orc":
+            case "skeleton":
+            case "orc":
                 $this->strength = 15;
                 break;
+            case "chicken":
+                $this->strength = 4;
+                break;
+            case "wolf":
+                $this->strength = 10;
+                break;
+            case "scarecrow":
+                $this->strength = 12;
+                break;
+            case "bandit":
+                $this->strength = 20;
+                break;
+
+
         }
     }
 

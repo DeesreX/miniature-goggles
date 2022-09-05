@@ -30,21 +30,22 @@ $battle = new \Rextopia\Game\Battle\Battle($character, $enemy, $window, $turn);
 ?>
 
 <div class="container-fluid window">
-    <div class="messages w-100">
+    <div class="background_forest"></div>
+
+    <div class="messages">
         <?php $window->printSessionMessages(); ?>
         <?php $window->flushSessionMessages(); ?>
     </div>
 
-
-    <?php echo $character->getName(); ?>
-    <?php $window->Bar(0, $character->getMaxHealth(), $character->getHealth(), "success"); ?>
-
-
-    <?php echo $enemy->getName(); ?>
-    <?php $window->Bar(0, $enemy->getMaxHealth(), $enemy->getHealth(), "danger"); ?>
+    <div class="info_bars">
+        <?php echo $character->getName(); ?>
+        <?php $window->Bar(0, $character->getMaxHealth(), $character->getHealth(), "success"); ?>
 
 
-    <br>
+        <?php echo $enemy->getName(); ?>
+        <?php $window->Bar(0, $enemy->getMaxHealth(), $enemy->getHealth(), "danger"); ?>
+    </div>
+
 
     <form method="post" class="battle">
         <input class="btn btn-primary" type="submit" name="btn_attack" value="Attack"/>
@@ -56,9 +57,9 @@ $battle = new \Rextopia\Game\Battle\Battle($character, $enemy, $window, $turn);
 <?php
 if (isset($_POST['btn_inventory'])) {
     $modal = "consumables";
-        include("../Modals/Inventory.php");
-    }
-if(isset($_POST['btn_use_item'])) {
+    include("../Modals/Inventory.php");
+}
+if (isset($_POST['btn_use_item'])) {
     $using = $_POST['btn_use_item'];
     $result = $character->useItem($using, $character);
     $character->saveCharacter();
@@ -75,31 +76,43 @@ if (isset($_POST['btn_attack'])) {
 }
 
 
-
 ?>
 <style>
+
     .window {
         width: 100%;
-        background-color: #BFD7EA;
-        padding: 10px 30px;
+        background-color: #000000;
         height: 100vh;
         /*display: flex;*/
     }
 
     .messages {
-        background-color: #ff8080;
-        height: 50vh;
-        /*padding: 20px;*/
+        background-color: #090909;
+        height: 30vh;
+        color: white;
+        padding: 20px;
+        font-size: 1em;
         /*margin: 20px;*/
 
     }
 
-    .battle_info {
-        height: 30vh;
-        width: 50%;
-        background-color: #B5BD89;
+    .battle {
+        background-color: #090909;
         display: flex;
-        justify-content: center;
+        justify-content: space-around;
+        padding: 10px;
+    }
+
+    .background_forest {
+        height: 40vh;
+        background: url('../Graphics/Backgrounds/Background.png') repeat-x bottom;
+    }
+
+    .info_bars{
+        background-color: #090909;
+        padding: 10px;
+        color: white;
+        height: 20vh;
     }
 
 </style>

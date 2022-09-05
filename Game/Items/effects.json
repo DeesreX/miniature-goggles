@@ -26,6 +26,10 @@
         "pizza":
         {
             "health": 50
+        },
+        "wheat":
+        {
+            "health": 15
         }
     }
 }

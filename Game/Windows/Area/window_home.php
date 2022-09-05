@@ -12,9 +12,9 @@ $actions = $gameManager->getActions("home");
 $window = new \Rextopia\Game\Window\WindowOutput();
 ?>
 
-<div class="container-fluid header">
-    <h1>Welcome Home <?php echo $characterName ?></h1>
-</div>
+<div class="container-fluid Background_room"></div>
+
+
 <div class="container-fluid actions">
     <form method="post">
         <?php foreach ($actions as $key => $action) { ?>
@@ -22,10 +22,14 @@ $window = new \Rextopia\Game\Window\WindowOutput();
         <?php } ?>
     </form>
 </div>
+
+
 <div class="container-fluid messages">
     <?php $window->printSessionMessages(); ?>
     <?php $window->flushSessionMessages(); ?>
 </div>
+
+
 <div class="container-fluid footer">
     <h4>HP</h4>
     <?php $window->Bar(0, $character->getMaxHealth(), $character->getHealth(), "success"); ?>
@@ -76,22 +80,24 @@ switch (array_key_first($action)){
 ?>
 
 <style>
-    .header {
-        background-color: red;
-        text-align: center;
-        padding: 10px;
-        height: 10vh;
+    .Background_room{
+        height: 30vh;
+        background: black url("../../Graphics/Backgrounds/background_room.jpeg") no-repeat bottom;
+    }
+
+    .Background_room{
+        background-size: contain;
     }
 
     .actions {
-        background-color: blue;
+        background-color: #000000;
         text-align: center;
         padding: 10px;
         height: 20vh;
     }
 
     .messages {
-        background-color: #090c04;
+        background-color: #000000;
         text-align: center;
         padding: 20px;
         height: 30vh;
@@ -99,10 +105,11 @@ switch (array_key_first($action)){
     }
 
     .footer {
-        background-color: lightgrey;
+        background-color: #000000;
         text-align: center;
         padding: 10px;
-        height: 40vh;
+        height: 20vh;
+        color: white;
     }
 </style>
 
