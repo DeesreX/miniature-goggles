@@ -9,7 +9,7 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 include "../Character/Character.php";
-include "../Enemy.php";
+include "../Enemies/Enemy.php";
 include "./Window_output.php";
 include "../Battle.php";
 
@@ -29,8 +29,8 @@ $battle = new \Rextopia\Game\Battle\Battle($character, $enemy, $window, $turn);
 
 ?>
 
-<div class="container">
-    <div class="messages w-75">
+<div class="container-fluid window">
+    <div class="messages w-100">
         <?php $window->printSessionMessages(); ?>
         <?php $window->flushSessionMessages(); ?>
     </div>
@@ -47,13 +47,19 @@ $battle = new \Rextopia\Game\Battle\Battle($character, $enemy, $window, $turn);
     <br>
 
     <form method="post" class="battle">
-        <input class="btn btn-primary" type="submit" name="btn_add_update" value="Press Me"/>
+        <input class="btn btn-primary" type="submit" name="btn_attack" value="Attack"/>
+        <input class="btn btn-primary" type="submit" name="btn_inventory" value="Inventory"/>
     </form>
 
 </div>
 
 <?php
-if (isset($_POST['btn_add_update'])) {
+if (isset($_POST['btn_inventory'])) {
+    $modal = "consumables";
+        include("../Modals/Inventory.php");
+    }
+
+if (isset($_POST['btn_attack'])) {
     $res = $battle->battle();
     if ($res) {
         include("../Modals/BattleResults.php");
@@ -62,9 +68,11 @@ if (isset($_POST['btn_add_update'])) {
     }
 }
 
+
+
 ?>
 <style>
-    .container {
+    .window {
         width: 100%;
         background-color: #BFD7EA;
         padding: 10px 30px;
@@ -73,7 +81,7 @@ if (isset($_POST['btn_add_update'])) {
     }
 
     .messages {
-        background-color: #00A6FB;
+        background-color: #ff8080;
         height: 50vh;
         /*padding: 20px;*/
         /*margin: 20px;*/

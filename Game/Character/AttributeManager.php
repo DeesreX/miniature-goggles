@@ -8,7 +8,7 @@ trait AttributeManager
     protected $maxHealth;
 
     protected function initAttributes(){
-        $this->maxHealth = 100;
+        $this->maxHealth = $this->calculateMaxHp();
         $this->currentHealth = $this->maxHealth;
     }
 
@@ -37,4 +37,14 @@ trait AttributeManager
     {
         $this->currentHealth -= $health;
     }
+    public function calculateMaxHp(){
+        return round(($this->constitution * 2.5) + ($this->strength * 1.1) + ($this->dexterity * 1.1)) * $this->getLevel();
+    }
+
+    public function setMaxHealth(){
+        $this->maxHealth = $this->calculateMaxHp();
+    }
+
+
+
 }

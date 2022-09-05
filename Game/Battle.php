@@ -32,16 +32,20 @@ class Battle{
         $this->endTurn();
 
         if($this->enemy->getHealth() <= 0){
+            $_SESSION['battle_win'] = true;
             $this->character->addGold($this->enemy->getGold());
             $drop = $this->enemy->dropItem();
             if($drop){
                 $this->character->addItem($drop);
-                $this->character->addExperience(10);
+                $xp = round(0.5 * $this->enemy->getAttack());
+                $this->character->addExperience($xp);
             }
             $_SESSION['drop'] = $drop;
+            $_SESSION['xp'] = $xp;
             $this->character->saveCharacter($this->character);
             return true;
         } elseif ($this->character->getHealth() <= 0){
+            $_SESSION['battle_win'] = false;
             return true;
         }
         return false;

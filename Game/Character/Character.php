@@ -23,11 +23,12 @@ class Character
 
     private $name;
     private $gold;
+    private $class;
 
     public $attack = 5;
-
     public function __construct($name = null, $class = null)
     {
+//        $this->levelUp();
         $this->name = $name;
         if(!$this->loadCharacter($name)){
             $this->init_stats($class);
@@ -40,7 +41,7 @@ class Character
 
     public function getAttack(): int
     {
-        return $this->attack;
+        return $this->calculateAttack();
     }
 
     public function getName()
@@ -75,7 +76,7 @@ class Character
 
     public function useItem($item, $character)
     {
-        $message = '';
+
         $this->setInventoryToArray();
         if (\in_array($item, $this->inventory)) {
             $message = $message . "You used " . $item . "!" . "<br>";

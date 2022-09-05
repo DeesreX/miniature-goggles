@@ -53,7 +53,10 @@ switch (array_key_first($action)){
         }
         break;
     case "craft":
-        $window->addSessionMessage("You can't craft yet...");
+//        $window->addSessionMessage("You can't craft yet...");
+        $window->addSessionMessage("You want this -> " . $character->calculateMaxHp() . ' <- much HP?');
+        $character->calculateMaxHp();
+
         header("Location: window_home.php");
         break;
     case "village":

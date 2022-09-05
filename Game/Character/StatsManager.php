@@ -42,8 +42,40 @@ Trait StatsManager
         }
     }
 
-    public function levelUp(){
-        $this->constitution += 5;
-        $this->attack += 5;
+    protected function calculate(){
+        $maxHp = 0;
+        $attack = 0;
+        $defense = 0;
+        $doubleAttackChance = 0;
+        $dodgeChance = 0;
+        $speed = 0;
     }
+
+    protected function allocateStatPoints(){
+        $this->strength += 1;
+        $this->dexterity += 1;
+        $this->constitution += 1;
+        $this->intelligence += 1;
+        $this->charisma += 1;
+        $this->luck += 1;
+
+        $this->setMaxHealth();
+    }
+
+    public function calculateAttack(){
+        $damage = round($this->strength * 3.5);
+        return rand($damage - $this->getLevel(), $damage + $this->getLevel());
+    }
+
 }
+
+
+
+
+
+
+
+
+
+
+

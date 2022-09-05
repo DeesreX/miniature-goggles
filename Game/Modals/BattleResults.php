@@ -12,12 +12,23 @@
 
             <div class="modal-body">
                 <?php
-                $enemyName =  $enemy->getName();
-                $drop = $_SESSION['drop'];
-                echo "You beat a " . $enemyName . "<br>";
-                echo "The " . $enemyName . " dropped " . $drop;
-                $character->addItem($drop);
-                $window->flushSessionMessages();
+                $result = $_SESSION['battle_win'];
+                if($result) {
+                    $enemyName = $enemy->getName();
+                    $drop = $_SESSION['drop'];
+                    $xp = $_SESSION['xp'];
+                    echo "You beat a " . $enemyName . "<br>";
+                    echo "The " . $enemyName . " dropped " . $drop . "<br>";
+                    echo "You got " . $xp . "XP.";
+                    $character->addItem($drop);
+                    $window->flushSessionMessages();
+                    $_SESSION['enemyId'] = null;
+                    $_SESSION['drop'] = null;
+                    $_SESSION['xp'] = null;
+                    unlink($enemy->getId());
+                } else {
+                    echo "Battle Lost...";
+                }
                 ?>
             </div>
 

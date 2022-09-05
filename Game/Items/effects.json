@@ -1,9 +1,7 @@
 {
     "food":{
-        "pizza": {
-            "health": 25,
-            "stamina": 45,
-            "mana": 10
+        "slime": {
+            "health": 25
         },
         "mango": {
             "health": 5,

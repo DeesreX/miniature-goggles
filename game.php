@@ -19,7 +19,7 @@ include('HTML/header.php');
 require_once('Game/Character/Character.php');
 require_once('Game/Shop.php');
 require_once('Game/Windows/Window_output.php');
-require_once('Game/Enemy.php');
+require_once('Game/Enemies/Enemy.php');
 require_once('Game/Battle.php');
 require_once('Game/Online.php');
 
@@ -132,14 +132,18 @@ $character->saveNewCharacter($character);
 
 
 if (isset($_POST['btn_battle'])) {
-    $enemyName = Enemy::getRandomEnemy();
-    $enemy = new Enemy($enemyName);
-    $enemy->saveTmpEnemy($enemy);
-    $_SESSION['enemyId'] = $enemy->getId();
-    $_SESSION['turn'] = true;
-    $_SESSION['gameover'] = 0;
-    $_SESSION['player'] = $character->getName();
-    header("Location: Game/Windows/Window_Battle.php");
+    if($character->getHealth() > 0) {
+        $enemyName = Enemy::getRandomEnemy();
+        $enemy = new Enemy($enemyName);
+        $enemy->saveTmpEnemy($enemy);
+        $_SESSION['enemyId'] = $enemy->getId();
+        $_SESSION['turn'] = true;
+        $_SESSION['gameover'] = 0;
+        $_SESSION['player'] = $character->getName();
+        header("Location: Game/Windows/Window_Battle.php");
+    } else {
+        $window->addSessionMessage("You dont have enough HP to battle...");
+    }
 } ?>
 
 <body>
@@ -184,10 +188,11 @@ if (isset($_POST['btn_battle'])) {
         </div>
         <div class="container character">
             <?php
-            $window->flushSessionMessages();
             $window->addSessionMessage("You are " . $character->getName());
             $window->addSessionMessage("You have " . (string)$character->getGold() . " gold");
-            $window->printSessionMessages(); ?>
+            $window->printSessionMessages();
+            $window->flushSessionMessages(); ?>
+
         </div>
         <div class="container">
             <?php

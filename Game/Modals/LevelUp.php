@@ -1,4 +1,4 @@
-<?php include "../../HTML/header.php"; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'] . "/HTML/header.php"; ?>
 
 <div id="myModal" class="modal fade" tabindex="-1">
     <div class="modal-dialog">
