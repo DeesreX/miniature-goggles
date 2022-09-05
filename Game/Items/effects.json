@@ -22,6 +22,10 @@
             "health":10,
             "stamina": 2,
             "mana": 0
+        },
+        "pizza":
+        {
+            "health": 50
         }
     }
 }

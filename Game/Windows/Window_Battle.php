@@ -58,6 +58,12 @@ if (isset($_POST['btn_inventory'])) {
     $modal = "consumables";
         include("../Modals/Inventory.php");
     }
+if(isset($_POST['btn_use_item'])) {
+    $using = $_POST['btn_use_item'];
+    $result = $character->useItem($using, $character);
+    $character->saveCharacter();
+    header("Location: ./Window_Battle.php");
+}
 
 if (isset($_POST['btn_attack'])) {
     $res = $battle->battle();

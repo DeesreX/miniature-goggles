@@ -30,6 +30,7 @@ if (!$_SESSION['character']) {
 }
 $user = $_SESSION['character'];
 $page = $_SERVER['PHP_SELF'];
+$_SESSION['path'] = $_SERVER['DOCUMENT_ROOT'];
 $time = strtotime('now');
 $_SESSION['lastAction'] = $time;
 
@@ -128,7 +129,7 @@ if (isset($_POST['logout'])) {
     header("Location: index.php");
 }
 //$character->saveCharacter($character);
-$character->saveNewCharacter($character);
+$character->saveCharacter();
 
 
 if (isset($_POST['btn_battle'])) {

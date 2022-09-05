@@ -10,7 +10,7 @@ class WindowOutput{
 //        $this->flushSessionMessages();
     }
 
-    public function addSessionMessage($message){
+    public static function addSessionMessage($message){
         array_push($_SESSION['messages'], $message);
     }
 

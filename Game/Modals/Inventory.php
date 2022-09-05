@@ -50,7 +50,7 @@
             <div class="modal-body">
                 <div class="inventory">
                     <form method="post">
-                        <?php foreach ($character->filterMobDrops() as $key => $value) { ?>
+                        <?php foreach ($character->getInventory() as $key => $value) { ?>
                             <input class="btn btn-success" type="submit" name="btn_use_item"
                                    value="<?php echo $value ?>" data="<?php echo $value ?>"/>
                         <?php } ?>
@@ -62,14 +62,6 @@
 </div>
 
 <?php
-if(isset($_POST['btn_use_item'])) {
-    $using = $_POST['btn_use_item'];
-    $result = $character->useItem($using, $character);
-    $character = $result[0];
-    $message = $result[1];
-    $window->addSessionMessage($message);
-    header("Location: ./Window_Battle.php");
-}
 
 ?>
 

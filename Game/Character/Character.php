@@ -11,6 +11,7 @@ use Rextopia\Manager\Character\AttributeManager;
 use Rextopia\Manager\Character\InventoryManager;
 use Rextopia\Manager\Character\LevelingManager;
 use Rextopia\Manager\Character\StatsManager;
+use Rextopia\Game\Window\WindowOutput;
 use stdClass;
 
 
@@ -26,11 +27,13 @@ class Character
     private $class;
 
     public $attack = 5;
+
     public function __construct($name = null, $class = null)
     {
 //        $this->levelUp();
         $this->name = $name;
-        if(!$this->loadCharacter($name)){
+        $this->window = new WindowOutput();
+        if (!$this->loadCharacter($name)) {
             $this->init_stats($class);
             $this->initInventoryManager();
             $this->initAttributes();
@@ -74,22 +77,33 @@ class Character
         return $this->$property;
     }
 
+    public function restore($attribute, $ammount)
+    {
+        switch ($attribute) {
+            case "health":
+                $this->addHealth($ammount);
+        }
+    }
+
     public function useItem($item, $character)
     {
 
         $this->setInventoryToArray();
         if (\in_array($item, $this->inventory)) {
-            $message = $message . "You used " . $item . "!" . "<br>";
+            WindowOutput::addSessionMessage("You used " . $item . "!" . "<br>");
             $this->removeItem($item);
-            $itemEffects = (array)json_decode(\file_get_contents('Game/Items/effects.json'));
-            $itemEffect = $itemEffects['food']->$item;
+            $path = $_SERVER['DOCUMENT_ROOT'] . "/Game/Items/effects.json";
+            $itemEffects = json_decode(file_get_contents($path));
+            $itemEffect = $itemEffects->food->$item;
             foreach ($itemEffect as $key => $value) {
-                $character->add($key, $value);
-                $message = $message . "You're " . $key . " restored by " . $value . "<br>";
+                $this->restore($key, $value);
+                WindowOutput::addSessionMessage("You're " . $key . " restored by " . $value . "<br>");
             }
-            return [$character, $message];
+            $this->saveCharacter();
+            return true;
         }
-        return [$character, "You have no " . $item . "'s left..."];
+        WindowOutput::addSessionMessage("You have no " . $item . "'s left...");
+        return false;
     }
 
     public function removeItem($item)
@@ -100,9 +114,14 @@ class Character
         }
     }
 
-    public function saveNewCharacter($character)
+    public function saveCharacter($character = null)
     {
         $characterData = array();
+
+        if (!$character) {
+            $character = $this;
+        }
+        $this->save($character, $characterData);
 
         foreach ($character as $key => $value) {
             $characterData[$key] = $this->getProperty($key);
@@ -128,13 +147,18 @@ class Character
         $jsonDataCharacter = json_encode($characterData);
         file_put_contents($pathSaveCharacter, $jsonDataCharacter);
         file_put_contents($pathSaveUser, $jsonDataUser);
+
     }
 
-    public function saveCharacter($character)
+    /**
+     * @param mixed $character
+     * @param array $characterData
+     * @return void
+     */
+    public function save(mixed $character, array $characterData): void
     {
-        $characterData = array();
         foreach ($character as $key => $value) {
-            if($key) {
+            if ($key) {
                 $characterData[$key] = $this->getProperty($key);
             }
         }
@@ -144,23 +168,11 @@ class Character
         file_put_contents($pathSaveCharacter, $jsonDataCharacter);
     }
 
-    private function saveCharacterSelf(){
-        $characterData = array();
-        foreach ($this as $key => $value) {
-            if($key) {
-                $characterData[$key] = $this->getProperty($key);
-            }
-        }
-        $characterName = $this->getName();
-        $pathSaveCharacter = $_SERVER['DOCUMENT_ROOT'] . "/Game/Saves/" . $characterName . ".json";
-        $jsonDataCharacter = json_encode($characterData);
-        file_put_contents($pathSaveCharacter, $jsonDataCharacter);
-    }
 
     public function loadCharacter($name)
     {
         $path = $_SERVER['DOCUMENT_ROOT'] . "/Game/Saves/" . $name . ".json";
-        if(self::existsCharacter($name)){
+        if (self::existsCharacter($name)) {
             $arrayData = \json_decode(\file_get_contents($path));
             foreach ($arrayData as $key => $value) {
                 $this->$key = $value;
