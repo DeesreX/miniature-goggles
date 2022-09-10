@@ -4,11 +4,9 @@
     <div class="modal-dialog">
         <div class="modal-content">
 
-
             <div class="modal-header">
                 <h5 class="modal-title">Battle results</h5>
             </div>
-
 
             <div class="modal-body">
                 <?php
@@ -32,9 +30,12 @@
                 ?>
             </div>
 
-
             <div class="modal-footer">
-                <form action="../../game.php" method="post">
+                <?php $area = $_SESSION['area'];
+                $path = "/Game/Windows/Area/" . $area . ".php"; ?>
+
+
+                <form action="<?php echo $path;?>" method="post">
                 <button type="submit" class="btn btn-primary">Next</button>
                 </form>
             </div>

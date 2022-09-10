@@ -8,7 +8,7 @@ class User
     private $dbh;
     private $usersTableName = 'users';
 
-    public function __construct($database, $host, $databaseUsername, $databaseUserPassword)
+    public function __construct()
     {
         $dev = true;
         if ($dev) {

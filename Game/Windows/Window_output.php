@@ -7,7 +7,6 @@ class WindowOutput{
     public function __construct(){
         $this->messages = array();
         $this->sessionMessages = $_SESSION['messages'];
-//        $this->flushSessionMessages();
     }
 
     public static function addSessionMessage($message){
@@ -25,7 +24,7 @@ class WindowOutput{
 
     public function printSessionMessages(){
         foreach ($_SESSION['messages'] as $key => $value) {
-            print_r($value . "<br>");
+            echo "<ul>" . $value . "</ul>" . "<br>";
         }
     }
 

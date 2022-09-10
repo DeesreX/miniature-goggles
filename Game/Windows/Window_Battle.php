@@ -1,8 +1,11 @@
 <?php
 include "../../HTML/header.php";
+include "../../Rexpg/Window/Window.php";
 
 session_start();
-
+if (!$_SESSION['character']) {
+    header("Location: index.php");
+}
 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -17,7 +20,7 @@ $turn = $_SESSION['turn'];
 $player = $_SESSION["player"];
 $gameover = $_SESSION['gameover'];
 $enemyId = $_SESSION['enemyId'];
-
+$windowManager = new \Rexpg\Window();
 
 $character = new \Rextopia\Game\Character\Character();
 $character->loadCharacter($player);
@@ -26,10 +29,8 @@ $enemy = \Rextopia\Game\Enemy\Enemy::loadTmpEnemy($enemyId);
 $window = new \Rextopia\Game\Window\WindowOutput();
 $battle = new \Rextopia\Game\Battle\Battle($character, $enemy, $window, $turn);
 
-
-?>
-
-<div class="container-fluid window">
+if($turn){ ?>
+    <div class="container-fluid window">
     <div class="background_forest"></div>
 
     <div class="messages">
@@ -53,10 +54,38 @@ $battle = new \Rextopia\Game\Battle\Battle($character, $enemy, $window, $turn);
     </form>
 
 </div>
+<?php } else { ?>
+<div class="container-fluid window">
+    <div class="background_forest"></div>
+
+    <div class="messages">
+        <?php $window->printSessionMessages(); ?>
+        <?php $window->flushSessionMessages(); ?>
+    </div>
+
+    <div class="info_bars">
+        <?php echo $character->getName(); ?>
+        <?php $window->Bar(0, $character->getMaxHealth(), $character->getHealth(), "success"); ?>
+
+
+        <?php echo $enemy->getName(); ?>
+        <?php $window->Bar(0, $enemy->getMaxHealth(), $enemy->getHealth(), "danger"); ?>
+    </div>
+
+
+    <form method="post" class="battle">
+        <input class="btn btn-primary" type="submit" name="btn_attack" value="Continue"/>
+    </form>
+
+</div>
+<?php } ?>
+
+
+
 
 <?php
 if (isset($_POST['btn_inventory'])) {
-    $modal = "consumables";
+    $modal = "inventory";
     include("../Modals/Inventory.php");
 }
 if (isset($_POST['btn_use_item'])) {
@@ -75,7 +104,6 @@ if (isset($_POST['btn_attack'])) {
     }
 }
 
-
 ?>
 <style>
 
@@ -90,7 +118,7 @@ if (isset($_POST['btn_attack'])) {
         background-color: #090909;
         height: 30vh;
         color: white;
-        padding: 20px;
+        padding: 15px;
         font-size: 1em;
         /*margin: 20px;*/
 
@@ -105,10 +133,20 @@ if (isset($_POST['btn_attack'])) {
 
     .background_forest {
         height: 40vh;
-        background: url('../Graphics/Backgrounds/Background.png') repeat-x bottom;
+    <?php
+    $area = $_SESSION['area'];
+    switch ($area){
+            case "forest_01":
+                $url = '../Graphics/Backgrounds/Background.png';
+            break;
+            case "mountain_01":
+                $url = "https://cdn.pixabay.com/photo/2017/03/28/21/44/autumn-2183489_960_720.jpg";
+            break;
+    }
+    ?> background: url(<?php echo $url?>) repeat-x bottom;
     }
 
-    .info_bars{
+    .info_bars {
         background-color: #090909;
         padding: 10px;
         color: white;

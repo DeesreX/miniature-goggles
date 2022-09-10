@@ -1,8 +1,35 @@
 {
   "craftables": {
-    "junk": [
-      "fail",
-      "fail"
-    ]
+    "green glob": {
+      "slime" : 2
+    },
+    "jello": {
+      "green glob": 2
+    },
+    "bread": {
+      "wheat": 2
+    },
+    "jelly sandwich": {
+      "bread": 2,
+      "jello": 1
+    },
+    "rope": {
+      "string": 2
+    },
+    "string": {
+      "web": 2
+    }
+  },
+  "tools": {
+    "stone_axe": {
+      "branch": 1,
+      "rope": 2,
+      "stone": 1
+    },
+    "stone_pickaxe": {
+      "branch": 1,
+      "rope": 2,
+      "stone": 1
+    }
   }
 }

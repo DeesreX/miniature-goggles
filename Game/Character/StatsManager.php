@@ -2,6 +2,8 @@
 
 namespace Rextopia\Manager\Character;
 
+use Rextopia\Game\Window\WindowOutput;
+
 Trait StatsManager
 {
     protected int $strength;
@@ -39,16 +41,15 @@ Trait StatsManager
                 $this->charisma = 0;
                 $this->luck = 2;
                 break;
-        }
-    }
+            default:
+                $this->strength = 2;
+                $this->dexterity = 2;
+                $this->constitution = 2;
+                $this->intelligence = 2;
+                $this->charisma = 2;
+                $this->luck = 2;
 
-    protected function calculate(){
-        $maxHp = 0;
-        $attack = 0;
-        $defense = 0;
-        $doubleAttackChance = 0;
-        $dodgeChance = 0;
-        $speed = 0;
+        }
     }
 
     protected function allocateStatPoints(){
@@ -64,7 +65,16 @@ Trait StatsManager
 
     public function calculateAttack(){
         $damage = round($this->strength * 3.5);
-        return rand($damage - $this->getLevel(), $damage + $this->getLevel());
+        $weapon = $this->getWeapon();
+        $weaponDmg = $this->getWeaponDamage($weapon);
+        $total_dmg = rand($damage + $weaponDmg - $this->getLevel(), $damage + $weaponDmg + $this->getLevel());
+
+        if(rand(0,100) <= 5){
+            $total_dmg *= 1.5;
+            WindowOutput::addSessionMessage('You just got a crit in!');
+        }
+
+        return round($total_dmg);
     }
 
 }

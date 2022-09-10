@@ -25,11 +25,7 @@ body{
     margin-top: 5px;
 }
 
-.container.character{
-    background-color: #64B6AC;
-    display: flex;
-    justify-content: space-between;
-}
+
 
 .container.stats{
     background-color: #B09E99;

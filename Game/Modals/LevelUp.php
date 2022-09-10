@@ -9,18 +9,22 @@
 
 
             <div class="modal-body">
-                <?php
+                <div>
+                    <?php
                     $character->levelUp();
-                    $character->setCurrentExperience( $character->getCurrentExperience() - $character->getToLevel());
+                    $character->setCurrentExperience($character->getCurrentExperience() - $character->getToLevel());
                     $character->setToLevel($character->getToLevel() + ($character->getLevel() * $character->getToLevel()));
                     $character->saveCharacter($character);
-                ?>
+
+                    echo "Congratulations! You are now Level " . $character->getLevel();
+                    ?>
+                </div>
             </div>
 
 
             <div class="modal-footer">
                 <form action="../Area/window_home.php" method="post">
-                <button type="submit" class="btn btn-primary">Next</button>
+                    <button type="submit" class="btn btn-primary">Next</button>
                 </form>
             </div>
         </div>
@@ -29,7 +33,7 @@
 
 
 <script type="text/javascript">
-    $(document).ready(function(){
+    $(document).ready(function () {
         $("#myModal").modal('show');
     });
 </script>

@@ -8,70 +8,47 @@ $window = new \Rextopia\Game\Window\WindowOutput();
 $active = "primary";
 ?>
 
-<div class="container d-flex align-items-center justify-content-center">
+<div class="container-fluid new_character">
     <form class="login100-form validate-form" action="" method="post">
-        <label for="character">Enter Character name</label><br>
-        <input name="character" type="text"/><br><br>
-        <div class="row">
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="class" id="inlineRadio1" value="Warrior">
-                <label class="form-check-label" for="inlineRadio1">Warrior</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="class" id="inlineRadio2" value="Rogue">
-                <label class="form-check-label" for="inlineRadio2">Rogue</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="class" id="inlineRadio2" value="Wizard">
-                <label class="form-check-label" for="inlineRadio2">Wizard</label>
-            </div>
-        </div>
-        <br>
-        <button name="submit" class="btn btn-success" type="submit">Create</button>
+        <label for="character">Enter Character name</label><br><br>
+        <label>
+            <input name="character" type="text"/>
+        </label><br><br>
+        <button name="submit" class="btn btn_create" type="submit">Create</button>
     </form>
+</div>
+<div class="bgImage"></div>
 
-    <?php
-    $canCreate = true;
 
-    if(isset($_POST['submit'])){
-        if (isset($_POST['character'])) {
-            if ($_POST['character'] == $_SESSION['username']) {
-                $window->addSessionMessage("Please use a different name than your username");
-                $canCreate = false;
-            } elseif (\Rextopia\Game\Character\Character::existsCharacter($_POST['character'])) {
-                $canCreate = false;
-                $window->addSessionMessage('Name all ready taken');
-            }
-        }
 
-        if (isset($_POST['class'])) {
-            $class = $_POST['class'];
-        } else {
-            $window->addSessionMessage("Please choose a class");
+<?php
+$canCreate = true;
+
+if(isset($_POST['submit'])){
+    if (isset($_POST['character'])) {
+        if ($_POST['character'] == $_SESSION['username']) {
+            $window->addSessionMessage("Please use a different name than your username");
             $canCreate = false;
-        }
-
-        if($canCreate){
-            $charName = $_POST['character'];
-            $character = new \Rextopia\Game\Character\Character($charName,"warrior" );
-            $character->saveCharacter($character);
-            $_SESSION['character'] = $character->getName();
-            header("Location: ../../game.php");
+        } elseif (\Rextopia\Game\Character\Character::existsCharacter($_POST['character'])) {
+            $canCreate = false;
+            $window->addSessionMessage('Name all ready taken');
         }
     }
 
 
+    if($canCreate){
+        $charName = $_POST['character'];
+        $character = new \Rextopia\Game\Character\Character($charName);
+        $character->saveCharacter($character);
+        $_SESSION['character'] = $character->getName();
+        header("Location: ../../game.php");
+    }
+}
 
 
-    ?>
 
-</div>
-<div class="container d-flex align-items-center justify-content-center">
-    <?php
-    $window->printSessionMessages();
-    $window->flushSessionMessages();
-    ?>
-</div>
+
+?>
 
 <style>
     .container {
@@ -79,6 +56,33 @@ $active = "primary";
         margin-bottom: 15vh;
         background-color: lightgrey;
         padding: 50px;
+    }
+
+    .new_character{
+        height: 20vh;
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        background-color: black;
+        color:white;
+    }
+
+    .btn_create{
+        width: 100%;
+        background-color: #6f8211;
+        color: white;
+    }
+    
+    .bgImage {
+        background: url('../Graphics/Rex-topia.png') no-repeat center fixed;
+        background-size: contain;
+        height: 80vh;
+        background-color: black;
+
+    }
+
+    .bgimage_{
+        width: 100%;
     }
 </style>
 

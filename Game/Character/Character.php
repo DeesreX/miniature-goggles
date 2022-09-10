@@ -6,6 +6,7 @@ include "LevelingManager.php";
 include "StatsManager.php";
 include "AttributeManager.php";
 include "InventoryManager.php";
+include "WeaponManager.php";
 
 use Rextopia\Manager\Character\AttributeManager;
 use Rextopia\Manager\Character\InventoryManager;
@@ -21,6 +22,7 @@ class Character
     use LevelingManager;
     use AttributeManager;
     use InventoryManager;
+    use WeaponManager;
 
     private $name;
     private $gold;
@@ -30,21 +32,35 @@ class Character
 
     public function __construct($name = null, $class = null)
     {
-//        $this->levelUp();
         $this->name = $name;
+        $this->class = $class;
         $this->window = new WindowOutput();
         if (!$this->loadCharacter($name)) {
             $this->init_stats($class);
             $this->initInventoryManager();
             $this->initAttributes();
-
+            $this->initWeapons();
             $this->gold = 20;
         }
+    }
+
+
+    public function getClass(): mixed
+    {
+        return $this->class;
     }
 
     public function getAttack(): int
     {
         return $this->calculateAttack();
+    }
+
+    public function equipWeapon($weapon){
+        if($this->hasWeapon($weapon)){
+            $this->setWeapon($weapon);
+            $this->saveCharacter();
+            return true;
+        } return false;
     }
 
     public function getName()
@@ -85,11 +101,11 @@ class Character
         }
     }
 
-    public function useItem($item, $character)
+    public function useItem($item)
     {
 
         $this->setInventoryToArray();
-        if (\in_array($item, $this->inventory)) {
+        if (array_key_exists($item, $this->inventory)) {
             WindowOutput::addSessionMessage("You used " . $item . "!" . "<br>");
             $this->removeItem($item);
             $path = $_SERVER['DOCUMENT_ROOT'] . "/Game/Items/effects.json";
@@ -106,13 +122,7 @@ class Character
         return false;
     }
 
-    public function removeItem($item)
-    {
-        $key = array_search($item, $this->inventory);
-        if ($key !== false) {
-            unset($this->inventory[$key]);
-        }
-    }
+
 
     public function saveCharacter($character = null)
     {
@@ -176,6 +186,9 @@ class Character
             $arrayData = \json_decode(\file_get_contents($path));
             foreach ($arrayData as $key => $value) {
                 $this->$key = $value;
+            }
+            if(!in_array('class', (array)$arrayData)){
+                $this->class = "Villager";
             }
             return true;
         }

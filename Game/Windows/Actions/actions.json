@@ -1,3 +1,5 @@
 {
-  "home": ["sleep", "cook", "village", "craft", "inventory", "inventoryMob"]
+  "home": ["sleep", "cook", "village", "craft", "inventory", "blacksmith", "equip_stone_axe"],
+  "forest_01": ["search", "gather_wood", "town"],
+  "mountain_01": ["search", "gather_stone", "town"]
 }

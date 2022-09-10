@@ -29,7 +29,11 @@ class Battle{
 
         $this->enemy->saveEnemy($this->enemy);
         $this->character->saveCharacter($this->character);
-        $this->endTurn();
+        if(rand(0, 5) == 3){
+            $this->window->addSessionMessage("You are fast enough. You get another turn");
+        } else {
+            $this->endTurn();
+        }
 
         if($this->enemy->getHealth() <= 0){
             $_SESSION['battle_win'] = true;
@@ -37,7 +41,7 @@ class Battle{
             $drop = $this->enemy->dropItem();
             if($drop){
                 $this->character->addItem($drop);
-                $xp = round(0.5 * $this->enemy->getAttack());
+                $xp = round(0.5 * ($this->character->getLevel() + $this->enemy->getmaxHealth()));
                 $this->character->addExperience($xp);
             }
             $_SESSION['drop'] = $drop;

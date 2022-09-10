@@ -1,0 +1,8 @@
+{
+  "stone_axe": {
+    "attack": 25
+  },
+  "fist": {
+    "attack": 2
+  }
+}

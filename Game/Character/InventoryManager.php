@@ -4,43 +4,43 @@ namespace Rextopia\Manager\Character;
 
 trait InventoryManager
 {
-    protected $inventory;
+    protected $inventory = array();
 
     protected function initInventoryManager(){
-        $this->inventory = array();
+        $this->inventory = array("slime" => 5);
     }
 
     public function getInventory()
     {
-        return $this->inventory;
+        return (array)$this->inventory;
     }
 
     public function addItem($item)
     {
-        $this->setInventoryToArray();
-        array_push($this->inventory, $item);
+        $inventory = $this->getInventory();
+        if(!array_key_exists($item, $inventory)){
+            $inventory[$item] = 1;
+        } else {
+            $inventory[$item] += 1;
+        }
+        $this->setInventory($inventory);
+    }
+
+    public function setInventory(array $inventory): void
+    {
+        $this->inventory = $inventory;
     }
 
     public function flushInventory(){
         $this->inventory = array();
-        $this->saveCharacterSelf();
+        $this->saveCharacter();
     }
 
-    public function getMobDrops(){
-        $path = $_SERVER['DOCUMENT_ROOT'] . "/Game/Items/mobDropItems.json";
-        $file = json_decode(file_get_contents($path));
-
-        return $file;
-    }
-
-    public function filterMobDrops(){
-        $mobDrops = get_object_vars($this->getMobDrops());
-        $tmpInventory = array();
-        foreach ($this->inventory as $key => $value){
-            if(in_array($value, $mobDrops["drops"])){
-                array_push($tmpInventory, $value);
-            }
-        }
-        return $tmpInventory;
+    public function removeItem($item, $ammount = 1)
+    {
+        $inventory = $this->getInventory();
+        $inventory[$item] -= $ammount;
+        $this->setInventory($inventory);
+        $this->saveCharacter();
     }
 }

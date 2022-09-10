@@ -50,8 +50,15 @@ class Enemy
             case "bandit":
                 $this->strength = 20;
                 break;
-
-
+            case "ent":
+                $this->strength = 30;
+                break;
+            case "stone_golem":
+                $this->strength = 17;
+                break;
+            case "troll":
+                $this->strength = 65;
+                break;
         }
     }
 
@@ -193,12 +200,13 @@ class Enemy
 
     public function saveTmpEnemy($enemy)
     {
-        $this->loadBase($enemy->getName());
-        $path = $_SERVER['DOCUMENT_ROOT'] . "/Game/Enemies/tmp/" . uniqid($enemy->getName(), true) . ".json";
+        $enemy->loadBase($this->getName());
+        $uuid = uniqid($enemy->getName(), true);
+        $path = $_SERVER['DOCUMENT_ROOT'] . "/Game/Enemies/tmp/" . $uuid . ".json";
         $this->id = $path;
 
         $arrayData = array();
-        foreach ($enemy as $key => $value) {
+        foreach ($this as $key => $value) {
             $arrayData[$key] = $this->getPorperty($key);
         }
         $jsonData = \json_encode($arrayData);
@@ -212,7 +220,7 @@ class Enemy
 
     public function loadEnemy($name)
     {
-        $path = $_SERVER['DOCUMENT_ROOT'] . "/Game/Enemies/Rat.json";
+        $path = $_SERVER['DOCUMENT_ROOT'] . "/Game/Enemies/rat.json";
         $arrayData = \json_decode(\file_get_contents($path));
         foreach ($arrayData as $key => $value) {
             $this->setPorperty($key, $value);
@@ -249,6 +257,7 @@ class Enemy
         $this->setGold($arrayData->gold);
         $this->setInventory($arrayData->inventory);
         $this->setMaxHealth();
+        return $this;
     }
 
     public function existsCharacter($name)

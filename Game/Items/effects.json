@@ -30,6 +30,18 @@
         "wheat":
         {
             "health": 15
+        },
+        "green glob": {
+            "health": 75
+        },
+        "jello": {
+            "health": 100
+        },
+        "bread": {
+            "health": 25
+        },
+        "jelly sandwich": {
+            "health": 250
         }
     }
 }

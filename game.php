@@ -2,6 +2,10 @@
 namespace Game\game;
 session_start();
 
+use Rexpg\Window;
+include "Rexpg/Window/Window.php";
+$windowRenderer = new Window();
+
 
 
 use Rextopia\Game\Enemy\Enemy;
@@ -23,8 +27,6 @@ require_once('Game/Enemies/Enemy.php');
 require_once('Game/Battle.php');
 require_once('Game/Online.php');
 
-
-
 if (!$_SESSION['character']) {
     header("Location: index.php");
 }
@@ -33,11 +35,13 @@ $page = $_SERVER['PHP_SELF'];
 $_SESSION['path'] = $_SERVER['DOCUMENT_ROOT'];
 $time = strtotime('now');
 $_SESSION['lastAction'] = $time;
+$_SESSION['area'] = "town";
+
+
 
 
 $character = new Character();
 $window = new WindowOutput();
-$battle = true;
 
 $online = new Online();
 
@@ -53,10 +57,16 @@ $window = new WindowOutput();
 $message = "Welcome to RextopiA<br>";
 $window->addSessionMessage($message);
 
+if(isset($_POST['btn_mountain'])){
+    $path = "/Game/Windows/Area/mountain_01.php";
+    header("Location: " . $path);
+}
 if (isset($_POST['btn_home'])) {
     header("Location: Game/Windows/Area/window_home.php");
 }
-
+if (isset($_POST['changeCharacter'])) {
+    header("Location: Game/Windows/window_load_character.php");
+}
 if (isset($_POST['btn_name'])) {
     $message = $character->getName();
     $window->addSessionMessage($message);
@@ -128,50 +138,76 @@ if (isset($_POST['logout'])) {
     session_destroy();
     header("Location: index.php");
 }
-//$character->saveCharacter($character);
-$character->saveCharacter();
+if (isset($_POST['btn_forest'])) {
+    $path = "/Game/Windows/Area/forest_01.php";
+    header("Location: " . $path);
+}
+$enemyToSpawn = "";
+$keys = array_keys($_POST);
+foreach ($keys as $value){
+    if(str_contains($value, 'btn_battle' )){
+        if($value === "btn_battle"){$enemyToSpawn = "btn_battle_" . Enemy::getRandomEnemy();}
+        else {$enemyToSpawn = $value;}
+    }
+}
 
 
-if (isset($_POST['btn_battle'])) {
-    if($character->getHealth() > 0) {
-        $enemyName = Enemy::getRandomEnemy();
-        $enemy = new Enemy($enemyName);
-        $enemy->saveTmpEnemy($enemy);
-        $_SESSION['enemyId'] = $enemy->getId();
-        $_SESSION['turn'] = true;
-        $_SESSION['gameover'] = 0;
-        $_SESSION['player'] = $character->getName();
+function setEnemy(mixed $enemyToSpawn, mixed $character): Enemy
+{
+    $enemy = new Enemy($enemyToSpawn);
+    $enemy->saveTmpEnemy($enemy);
+    $_SESSION['enemyId'] = $enemy->getId();
+    $_SESSION['turn'] = true;
+    $_SESSION['gameover'] = 0;
+    $_SESSION['player'] = $character->getName();
+    return $enemy;
+}
+
+if($enemyToSpawn){
+    if ($character->getHealth() > 0) {
+        setEnemy(str_replace('btn_battle_', '', $enemyToSpawn), $character);
         header("Location: Game/Windows/Window_Battle.php");
     } else {
         $window->addSessionMessage("You dont have enough HP to battle...");
     }
-} ?>
+}
+$character->saveCharacter();
+
+?>
+
 
 <body>
 <div class="container-fluid">
+    <?php ob_start(); ?>
     <form method="post" class="container" action="">
-        <h3>Super User</h3>
-        <input class="btn btn-danger" type="submit" name="btn_battle" value="Battle Random Enemy?"/>
-        <input class="btn btn-success" type="submit" name="btn_home" value="Go home?"/>
+        <h3>Welcome <strong><?php echo $character->getName() ?></strong>!</h3>
+
         <hr>
-<!--        --><?php //include("Game/Modals/Shop.php");?>
-<!--        --><?php //include("Game/Modals/Inventory.php");?>
+        <input class="btn btn-success" type="submit" name="btn_home" value="Go home"/>
+        <input class="btn btn-success" type="submit" name="btn_forest" value="Go to Forest"/>
+        <input class="btn btn-success" type="submit" name="btn_mountain" value="Go to Mountain"/>
+        <input class="btn btn-warning" type="submit" name="btn_shop" value="Go to Market"/>
         <hr>
+
         <input class="btn btn-primary" type="submit" name="btn_refresh" value="Refresh"/>
         <hr>
 
     </form>
+    <?php $part_01 = ob_get_clean();
+    ob_start(); ?>
+
     <div class="container">
-        <form action="index.php" method="post">
-            <input class="btn btn-danger container" type="submit" name="logout" value="Log Out"/>
+        <form action="" method="post" class="d-block">
+            <input class="btn btn-danger" type="submit" name="logout" value="Log Out"/>
+            <input class="btn btn-danger" type="submit" name="changeCharacter" value="Change Character"/>
         </form>
     </div>
 
-
-
+    <?php $part_02 = ob_get_clean();
+    ob_start(); ?>
 
     <div class="container">
-        <div class="progress w-100">
+        <div class="progress w-100 healthBar">
             <div class="progress-bar bg-success"
                  style="width: <?php echo($character->getHealth() / $character->getMaxHealth() * 100) ?>%;"
                  role="progressbar"
@@ -189,8 +225,18 @@ if (isset($_POST['btn_battle'])) {
         </div>
         <div class="container character">
             <?php
-            $window->addSessionMessage("You are " . $character->getName());
+            $hints = array(
+                'HINT: Sleeping allows you to level up when requirements are met (The yellow bar)',
+                'HINT: You cant see crafting recipes. Yet...',
+                "HINT: The blacksmith can make an axe. That's it",
+                "AXE: 2x rope | 1x stone | 1x branch"
+            );
+
+            $window->addSessionMessage("You are a Level " . $character->getLevel() . " " . $character->getClass() . " called " . $character->getName());
             $window->addSessionMessage("You have " . (string)$character->getGold() . " gold");
+            $hint = $hints[rand(0, count($hints) - 1)];
+            $window->addSessionMessage($hint);
+
             $window->printSessionMessages();
             $window->flushSessionMessages(); ?>
 
@@ -206,10 +252,48 @@ if (isset($_POST['btn_battle'])) {
             ?>
         </div>
     </div>
+
+    <?php $part_03 = ob_get_clean(); ?>
+</div>
+
 </body>
 
+
+<?php
+
+
+$page = array($part_01 => 40, $part_02 => 10, $part_03 => 50);
+$content = $windowRenderer->createContent($page);
+$town = $windowRenderer->createWindow($content);
+$windowRenderer->display($town);
+
+?>
+
+
 <style>
-    .experienceBar{
+    body {
+        margin: 0;
+        background-color: black;
+    }
+
+    .experienceBar {
         color: yellow;
+        border-radius: 0;
+    }
+
+    .container .character{
+        background-color: #880D1E;
+        justify-content: space-between;
+        border-radius: 0;
+
+    }
+
+    .healthBar{
+        border-radius: 0;
+
+    }
+
+    .btn{
+        border-radius: 0;
     }
 </style>

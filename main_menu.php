@@ -26,7 +26,9 @@ $_SESSION['messages'] = array();
     <div class="row align-items-end h-25">
         <div class="col"></div>
         <div class="col"></div>
-        <div class="col user">Welcome Back <?php echo $_SESSION['username']?></div>
+        <?php if(isset($_SESSION['username'])){ ?>
+        <div class="col user">Welcome Back <?php echo $_SESSION['username'];?></div>
+        <?php } ?>
     </div>
 </div>
 

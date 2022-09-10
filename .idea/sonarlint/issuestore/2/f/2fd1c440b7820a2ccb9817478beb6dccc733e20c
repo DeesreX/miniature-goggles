@@ -1,0 +1,7 @@
+
+b	php:S1192È"FDefine a constant instead of duplicating this literal ".json" 7 times.(ÑÒüq8¡‘òÌ±0
+F	php:S1481´")Remove this unused "$key" local variable.(¢¤õ—8¢‘òÌ±0
+F	php:S1481¨")Remove this unused "$key" local variable.(¢¤õ—8¢‘òÌ±0
+J	php:S1172Ø"-Remove the unused function parameter "$name".(ÃŠ‡8¢‘òÌ±0
+v	php:S1448"aClass "Enemy" has 35 methods, which is greater than 20 authorized. Split it into smaller classes.(çÔ²¾
+Kphp:S131"7Add a "case default" clause to this "switch" statement.(¢ø†ğ
